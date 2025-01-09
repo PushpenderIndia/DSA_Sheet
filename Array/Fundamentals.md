@@ -170,3 +170,26 @@ public:
 ### 6. Left Rotate Array by K Places
 Given an integer array nums and a non-negative integer k, rotate the array to the left by k steps.
 
+```
+class Solution {
+public:
+    void rotateArray(vector<int>& nums, int k) {
+        k = k%nums.size();
+        vector<int> intArr;
+        for (int i=0; i<k; i++){
+            intArr.push_back(nums[i]);
+        }
+
+        int a = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (i >=  nums.size() - k ) {  
+                nums[i] = intArr[a];
+                a++;
+            } else {
+                nums[i] = nums[i+k];
+            } 
+        }
+    }
+};
+```
+
