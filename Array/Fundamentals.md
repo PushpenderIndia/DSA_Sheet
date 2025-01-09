@@ -150,3 +150,23 @@ public:
 ### 5. Left Rotate Array by One
 Given an integer array nums, rotate the array to the left by one.
 
+```
+class Solution {
+public:
+    void rotateArrayByOne(vector<int>& nums) {
+        int firstElement = nums[0];
+        for (int i=0; i<nums.size(); i++){
+            if (i == nums.size()-1){
+                nums[i] = firstElement;
+            }
+            else {
+                nums[i] = nums[i+1];
+            }  
+        }
+    }
+};
+```
+
+### 6. Left Rotate Array by K Places
+Given an integer array nums and a non-negative integer k, rotate the array to the left by k steps.
+
