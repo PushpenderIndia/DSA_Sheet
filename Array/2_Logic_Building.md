@@ -78,3 +78,51 @@ public:
 
 ### 3. Find missing number
 Given an integer array of size n containing distinct values in the range from 0 to n (inclusive), return the only number missing from the array within this range.
+
+```
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        for (int i=0; i<nums.size(); i++){
+            if (nums[i] != i){
+                return i;
+            }
+        }
+        return nums.size();
+    }
+};
+```
+
+### 4. Union of two sorted arrays
+Given two sorted arrays nums1 and nums2, return an array that contains the union of these two arrays. The elements in the union must be in ascending order.
+
+The union of two arrays is an array where all values are distinct and are present in either the first array, the second array, or both.
+
+```
+class Solution {
+public:
+    vector<int> unionArray(vector<int>& nums1, vector<int>& nums2) {
+        set<int> all;
+        for (int val : nums1 ) {
+            all.insert(val);
+        } 
+        for (int val1 : nums2 ) {
+            all.insert(val1);
+        } 
+
+        vector<int> result;
+        for (int val2: all ){
+            result.push_back(val2);
+        }
+        sort(result.begin(), result.end());
+        return result;
+    }
+};
+```
+
+### 5. Intersection of two sorted arrays
+Given two sorted arrays nums1 and nums2, return an array containing the intersection of these two arrays.
+
+The intersection of two arrays is an array where all values are present in both arrays.
+
