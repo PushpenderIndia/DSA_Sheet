@@ -57,5 +57,24 @@ public:
 ```
 
 ```
-Optimal: 
+Optimal
 ```
+
+```
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int j=0;
+        for (int i=1; i<nums.size(); i++){
+            if (nums[j] != nums[i]){  
+                j++;
+                nums[j] = nums[i]; 
+            } 
+        }
+        return j+1;
+    }
+};
+```
+
+### 3. Find missing number
+Given an integer array of size n containing distinct values in the range from 0 to n (inclusive), return the only number missing from the array within this range.
