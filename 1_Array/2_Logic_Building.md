@@ -126,3 +126,30 @@ Given two sorted arrays nums1 and nums2, return an array containing the intersec
 
 The intersection of two arrays is an array where all values are present in both arrays.
 
+```
+class Solution {
+public:
+    vector<int> intersectionArray(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> answer;
+        if (nums1.size() > nums2.size()){
+            for (int val: nums1){
+                bool exists = find(nums2.begin(), nums2.end(), val) != nums2.end();
+                bool can_add = count(nums2.begin(), nums2.end(), val) > count(answer.begin(), answer.end(), val);
+                if (exists && can_add){
+                    answer.push_back(val);
+                }   
+            }        
+        } else {
+            for (int val: nums2){
+                bool exists = find(nums1.begin(), nums1.end(), val) != nums1.end();
+                bool can_add = count(nums1.begin(), nums1.end(), val) > count(answer.begin(), answer.end(), val);
+
+                if (exists && can_add){
+                    answer.push_back(val);
+                }              
+            }
+        }
+        return answer;
+    }
+};
+```
