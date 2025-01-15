@@ -220,4 +220,73 @@ public:
 };
 ```
 
-``
+```
+Optimal [In Place]:
+1. Take Transpose 
+2. Reverse  the sub arrays
+```
+
+```
+class Solution {
+public:
+    void rotateMatrix(vector<vector<int>>& matrix) {
+        /*
+            Input:
+            [[1, 2, 3], 
+             [4, 5, 6], 
+             [7, 8, 9]]
+
+            Take Transpose
+             [[1, 4, 7], 
+             [2, 5, 8], 
+             [3, 6, 9]]
+
+            Reverse
+             [[7, 4, 1], 
+             [8, 5, 2], 
+             [9, 6, 3]]
+        */
+        for (int i=0; i<matrix.size(); i++){
+            for (int j=0; j<i; j++){
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+
+        for (int i=0; i<matrix.size(); i++){
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
+};
+```
+
+### 6. Two Sum
+Given an array of integers nums and an integer target. Return the indices(0 - indexed) of two elements in nums such that they add up to target.
+
+Each input will have exactly one solution, and the same element cannot be used twice. Return the answer in non-decreasing order.
+
+```
+Bruteforce
+```
+
+```
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for (int i=0; i<nums.size(); i++){
+            for (int j=0; j<i; j++){
+                if (nums[i] + nums[j] == target){
+                    return {i, j};
+                }
+            }
+        }
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+
+```
