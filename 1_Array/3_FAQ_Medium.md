@@ -284,9 +284,25 @@ public:
 ```
 
 ```
-Optimal
+Optimal:
+
+1. Using Hashmap to store 
+2. Finding Target-Num[i] in Hashmap 
 ```
 
 ```
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> ans;
 
+        for (int i=0; i<nums.size(); i++){
+            int elem_to_search = target - nums[i];
+            if (ans.find(elem_to_search) != ans.end()){
+                return {i, ans[elem_to_search]};
+            }
+            ans[nums[i]] = i;
+        }
+    }
+};
 ```
