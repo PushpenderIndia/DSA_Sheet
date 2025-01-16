@@ -284,7 +284,7 @@ public:
 ```
 
 ```
-Optimal:
+Optimal: Using Map 
 
 1. Using Hashmap to store 
 2. Finding Target-Num[i] in Hashmap 
@@ -303,6 +303,43 @@ public:
             }
             ans[nums[i]] = i;
         }
+    }
+};
+```
+
+```
+Optimal: Using Two Pointer Greedy Approach
+```
+
+```
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {        
+        vector<vector<int>> eIndex;
+        for(int i = 0; i < nums.size(); i++){
+            eIndex.push_back({nums[i], i});
+        }
+        
+        sort(eIndex.begin(), eIndex.end(), 
+            [](const vector<int>& a, const vector<int>& b) {
+           return a[0] < b[0]; 
+        });
+
+
+        int left = 0, right = nums.size() - 1; 
+        while (left < right) {
+            int sum = eIndex[left][0] + eIndex[right][0];
+
+            if (sum == target) {
+                return {eIndex[left][1], eIndex[right][1]};     
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;  
+            }
+        }
+
+        return {-1, -1};
     }
 };
 ```
