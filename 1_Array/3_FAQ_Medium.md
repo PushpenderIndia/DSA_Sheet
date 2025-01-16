@@ -378,3 +378,31 @@ public:
     }
 };
 ```
+
+```
+Better: Using Set with math equation a+b = - c 
+```
+
+```
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> ans;
+        for (int i=0; i<nums.size(); i++){
+            set<int> hashset;
+            for (int j=i+1; j<nums.size(); j++){
+                int third = -(nums[i] + nums[j]);
+                if (hashset.end() != hashset.find(third)){
+                    vector<int> temp = {nums[i], nums[j], third};
+                    sort(temp.begin(), temp.end());
+                    ans.insert(temp);
+                }
+                hashset.insert(nums[j]);
+            }
+            
+        }
+        vector<vector<int>> answer(ans.begin(), ans.end());
+        return answer;
+    }
+};
+```
