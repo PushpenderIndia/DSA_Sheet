@@ -346,3 +346,35 @@ public:
     }
 };
 ```
+
+### 7. 3 Sum
+Given an integer array nums.Return all triplets such that:
+
+1. i != j, i != k, and j != k
+2. nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets. One element can be a part of multiple triplets. The output and the triplets can be returned in any order.
+
+```
+Bruteforce
+```
+
+```
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> ans;
+        for (int i=0; i<nums.size()-2; i++){
+            for (int j=i+1; j<nums.size()-1; j++){
+                for (int k=j+1; k<nums.size(); k++){
+                    if (nums[i] + nums[j] + nums[k] == 0 && i!=j && i!=k && j!=k){
+                        ans.insert({nums[i], nums[j], nums[k]});
+                    }
+                }
+            }
+        }
+        vector<vector<int>> answer(ans.begin(), ans.end());
+        return answer;
+    }
+};
+```
