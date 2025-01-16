@@ -284,7 +284,7 @@ public:
 ```
 
 ```
-Optimal: Using Map 
+Optimal: Using Map  [ T: O(N) ] [ S: O(N) ]
 
 1. Using Hashmap to store 
 2. Finding Target-Num[i] in Hashmap 
@@ -308,7 +308,10 @@ public:
 ```
 
 ```
-Optimal: Using Two Pointer Greedy Approach
+Optimal: Using Two Pointer Greedy Approach [ T: O(N) x O(NlogN) ] [ S: O(N*N) ]
+
+If we don't want to return exact index, then this approach is better 
+otherwise Map approach is better
 ```
 
 ```
