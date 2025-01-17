@@ -524,3 +524,54 @@ public:
     } 
 };
 ```
+
+### 9. Sort an array of 0's 1's and 2's
+Given an array nums consisting of only 0, 1, or 2. Sort the array in non-decreasing order. The sorting must be done in-place, without making a copy of the original array.
+
+```
+Bruteforce [ T: (OlogN) ] [ S: O(1) ]
+```
+
+```
+class Solution {
+public:
+    void sortZeroOneTwo(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+    }
+};
+```
+
+```
+Better [ T: O(N)+ O(N) = O(2N) ]
+```
+
+```
+class Solution {
+public:
+    void sortZeroOneTwo(vector<int>& nums) {
+        int zeros = 0;
+        int ones = 0;
+        int twos = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (nums[i] == 0){
+                zeros++;
+            } else if (nums[i] == 1){
+                ones++;
+            } else {
+                twos++;
+            }
+        } 
+
+
+        for (int i=0; i<zeros; i++){
+            nums[i] = 0;
+        }
+        for (int j=zeros; j<zeros+ones; j++){
+            nums[j] = 1;
+        }
+        for (int k=zeros+ones; k<nums.size(); k++){
+            nums[k] = 2;
+        }
+    }
+};
+```
