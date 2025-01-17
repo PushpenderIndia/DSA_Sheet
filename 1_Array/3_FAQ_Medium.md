@@ -442,3 +442,85 @@ public:
     }
 };
 ```
+
+### 8. 4 Sum
+Given an integer array nums and an integer target. Return all quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+1. a, b, c, d are all distinct valid indices of nums.
+2. nums[a] + nums[b] + nums[c] + nums[d] == target.
+
+Notice that the solution set must not contain duplicate quadruplets. One element can be a part of multiple quadruplets. The output and the quadruplets can be returned in any order.
+
+```
+Bruteforce
+```
+
+```
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        set<vector<int>> ans;
+        for (int i=0; i<nums.size(); i++){
+            for (int j=i+1; j<nums.size(); j++){
+                for (int k=j+1; k<nums.size(); k++){
+                    for (int l=k+1; l<nums.size(); l++){
+                        int sum = nums[i]+nums[j]+nums[k]+nums[l];
+                        if (sum == target){
+                            vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
+                            ans.insert(temp);
+                        }
+
+                    }
+                }
+            }
+        }
+        vector<vector<int>> answer(ans.begin(), ans.end());
+        return answer;
+    } 
+};
+```
+
+```
+Better
+```
+
+```
+Optimal: Using Two Pointer 
+```
+
+```
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> ans;
+        sort(nums.begin(), nums.end());
+        for (int i=0; i<nums.size(); i++){
+            // Skip duplictaes for i
+            if (i > 0 && nums[i] == nums[i-1]) continue;
+            for (int j=i+1; j<nums.size(); j++){
+                // Skip duplictaes for j
+                if (j > i+1 && nums[j] == nums[j-1]) continue;
+
+                int left = j+1;
+                int right = nums.size() - 1;
+                while (left<right){
+                    int sum = nums[i]+nums[j]+nums[left]+nums[right];
+                    if (sum > target){
+                        right--;
+                    } else if (sum < target){
+                        left++;
+                    } else {
+                        vector<int> temp = {nums[i], nums[j], nums[left], nums[right]};
+                        ans.push_back(temp);
+                        right--;
+                        left++;
+                        while (left<right && nums[left] == nums[left-1]) left++;
+                        while (left<right && nums[right] == nums[right+1]) right--;
+                    }
+                }
+            }
+        }
+        return ans;
+    } 
+};
+```
