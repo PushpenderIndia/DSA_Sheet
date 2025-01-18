@@ -575,3 +575,102 @@ public:
     }
 };
 ```
+
+```
+Optimal: Dutch National flag algorithm. [ T: O(N) ] [ S: O(1) ]
+```
+
+```
+class Solution {
+public:
+    void sortZeroOneTwo(vector<int>& nums) {
+        int low = 0;
+        int mid = 0;
+        int high = nums.size() - 1;
+        while (mid <= high){
+            if (nums[mid] == 0){
+                swap(nums[low], nums[mid]);
+                low++;
+                mid++;
+            } else if (nums[mid] == 1){
+                mid++;
+            } else {
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+        }
+    }
+};
+```
+
+### 10. Kadane's Algorithm
+Given an integer array nums, find the subarray with the largest sum and return the sum of the elements present in that subarray.
+
+A subarray is a contiguous non-empty sequence of elements within an array.
+
+```
+Bruteforce
+```
+
+```
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxSum = INT_MIN;
+        for (int i=0; i<nums.size(); i++){
+            for (int j=i; j<nums.size(); j++){
+                int sum = 0;
+                for (int k=i; k<=j; k++){
+                    sum += nums[k];
+                }
+                maxSum = max(maxSum, sum);
+            }
+        }
+        return maxSum;
+    }
+};
+```
+
+```
+Better 
+```
+
+```
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxSum = INT_MIN;
+        for (int i=0; i<nums.size(); i++){
+            int sum = 0;
+            for (int j=i; j<nums.size(); j++){
+                sum += nums[j];
+                maxSum = max(maxSum, sum);
+            }
+        }
+        return maxSum;
+    }
+};
+```
+
+```
+Optimal: Kadane Algorithm (Keep adding current num untill its giving +ve sum, else set sum = 0)
+```
+
+```
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxSum = nums[0];
+        int sum = 0;
+        for (int i=0; i<nums.size(); i++){
+            if ( sum+nums[i] > 0 ){
+                sum = sum + nums[i];
+                maxSum = max(sum, maxSum);
+            } else {
+                sum = 0;
+            }
+        }
+        return maxSum;
+    }
+};
+```
