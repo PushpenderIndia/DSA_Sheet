@@ -110,7 +110,7 @@ void explainQueue() {
 }
 
 void explainPriorityQueue(){
-    // Max heap
+    // Max heap : Elements are in descending order
     priority_queue<int> pq;
     pq.push(1);
     pq.push(2);
@@ -121,7 +121,7 @@ void explainPriorityQueue(){
     pq.pop();
     cout << pq.top() << endl;
 
-    // Min heap
+    // Min heap : Elements are in ascending order
     priority_queue<int, vector<int>, greater<int>> pq2;
     pq2.push(1);
     pq2.push(2);
