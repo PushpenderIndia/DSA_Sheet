@@ -14,9 +14,11 @@ Big O time complexities in order from lowest to highest, along with examples:
 
 ## Table of Content
 - [Array](#array)
+    - [Contains Duplicate](#1-contains-duplicate)
 
 ## Array
-1. Contains Duplicate: [Leetcode Link](https://leetcode.com/problems/contains-duplicate/description/)
+### 1. Contains Duplicate: 
+[Leetcode Link](https://leetcode.com/problems/contains-duplicate/description/)
 ```
 Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
