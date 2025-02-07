@@ -62,3 +62,35 @@ public:
 ### 2. Longest subarray with sum K
 Given an array nums of size n and an integer k, find the length of the longest sub-array that sums up to k. If no such sub-array exists, return 0.
 
+```
+Bruteforce
+```
+
+```
+class Solution{
+public:
+    int longestSubarray(vector<int> &nums, int k){
+        int ans = 0;
+        for (int i=0; i<nums.size(); i++) {
+            int current_sum = 0;
+            int ele_count = 0;
+            for (int j=i+1; j<nums.size(); j++){
+                current_sum += nums[j];
+                ele_count++;
+                if (current_sum == k){
+                    ans = max(ans, ele_count);
+                } else if (current_sum > k){
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+```
+Better
+```
+
+```
