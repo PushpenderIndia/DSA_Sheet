@@ -185,4 +185,71 @@ Optimal
 ```
 
 ```
+class Solution{
+public:
+    int subarraySum(vector<int> &nums, int k){
+        unordered_map<int, int> prefixSumMap;
+        prefixSumMap[0] = 1;
+        int current_prefixSum = 0;
+        int subarray_count = 0;
+        for (int i=0; i<nums.size(); i++){
+            current_prefixSum += nums[i];
+            int sumToRemove = current_prefixSum - k;
+            subarray_count += prefixSumMap[sumToRemove];
+            prefixSumMap[current_prefixSum] += 1;
+            
+        }
+        return subarray_count;
+    }
+};
+```
+
+### 4. Count subarrays with given xor K
+Given an array of integers nums and an integer k, return the total number of subarrays whose XOR equals to k.
+
+```
+Bruteforce
+```
+
+```
+class Solution{
+public:
+    int subarraysWithXorK(vector<int> &nums, int k) {
+        int ans = 0;
+        for (int i=0; i<nums.size(); i++){
+            int currentXOR = 0;
+            for (int j=i; j<nums.size(); j++){
+                currentXOR = currentXOR ^ nums[j];
+                
+                if (currentXOR == k){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+class Solution{
+public:
+    int subarraysWithXorK(vector<int> &nums, int k) {
+        unordered_map<int, int> prefixXOR_Map;
+        prefixXOR_Map[0] = 1;
+        int ans = 0;
+        int currentXOR = 0;
+        for (int i=0; i<nums.size(); i++){
+            currentXOR = currentXOR ^ nums[i];
+            int XOR_toRemove = currentXOR ^ k;
+            ans += prefixXOR_Map[XOR_toRemove];
+            prefixXOR_Map[currentXOR] += 1;
+        }
+        return ans;
+    }
+};
 ```
