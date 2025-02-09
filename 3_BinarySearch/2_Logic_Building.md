@@ -255,3 +255,51 @@ public:
     }
 };
 ```
+
+### 7. Find out how many times the array is rotated
+Given an integer array nums of size n, sorted in ascending order with distinct values. The array has been right rotated an unknown number of times, between 1 and n. Determine the number of rotations performed on the array.
+
+```
+class Solution {
+public:
+    int findKRotation(vector<int> &nums)  {
+        int n = nums.size();
+        int low = 0;
+        int high = n-1;
+        int min_num = INT_MAX;
+        int min_num_index = -1;
+        while (low<=high){
+            int mid = (low+high)/2;
+            if (nums[low] <= nums[high]){
+                if (nums[low] < min_num){
+                    min_num = nums[low];
+                    min_num_index = low;
+                }
+                break;
+                
+            } 
+            else if (nums[low] <= nums[mid]){
+                if (nums[low] < min_num){
+                    min_num = nums[low];
+                    min_num_index = low;
+                }
+                low = mid + 1;
+            } 
+            
+            else {
+                if (nums[mid] < min_num){
+                    min_num = nums[mid];
+                    min_num_index = mid;
+                }
+                high = mid - 1;
+            }
+        }
+        return min_num_index;
+    }
+};
+```
+
+### 8. Single element in sorted array
+Given an array nums sorted in non-decreasing order. Every number in the array except one appears twice. Find the single number in the array.
+
+
