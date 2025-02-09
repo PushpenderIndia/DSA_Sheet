@@ -171,3 +171,67 @@ public:
     }
 };
 ```
+
+### 5. Search in rotated sorted array-II
+Given an integer array nums, sorted in ascending order (may contain duplicate values) and a target value k. Now the array is rotated at some pivot point unknown to you. Return True if k is present and otherwise, return False.
+
+```
+class Solution {
+public:
+    bool searchInARotatedSortedArrayII(vector<int> &nums, int k)  {
+        int n = nums.size();
+        int low = 0;
+        int high = n - 1;
+        while (low <= high){
+            int mid = (low+high)/2;
+            if (nums[mid] == k){
+                return true;
+            }
+            
+            if (nums[low] == nums[mid] && nums[mid] == nums[high]){
+                low = low + 1;
+                high = high - 1;
+                continue;
+            }
+
+            if (nums[low] <= nums[mid]){
+                if (nums[low] <= k && nums[mid] >= k){
+                    high = mid - 1;
+                }
+                else {
+                    low = mid + 1;
+                }
+            }
+            else {
+                if (nums[mid] <= k && nums[high] >= k){
+                    low = mid + 1;
+                }
+                else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+};
+```
+
+### 6. Find minimum in Rotated Sorted Array
+Given an integer array nums of size N, sorted in ascending order with distinct values, and then rotated an unknown number of times (between 1 and N), find the minimum element in the array.
+
+```
+Using min_element() : Not ideal for interview
+```
+
+```
+class Solution {
+public:
+    int findMin(vector<int> &arr)  {
+        auto it = min_element(arr.begin(), arr.end());
+        return *it;
+    }
+};
+```
+
+```
+```
