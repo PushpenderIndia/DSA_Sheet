@@ -234,4 +234,24 @@ public:
 ```
 
 ```
+class Solution {
+public:
+    int findMin(vector<int> &arr)  {
+        int min_ans = INT_MAX;
+        int n = arr.size();
+        int low = 0;
+        int high = n - 1;
+        while (low<=high){
+            int mid = (low+high)/2;
+            if (arr[low] <= arr[mid]){
+                min_ans = min(min_ans, arr[low]);
+                low = mid + 1;
+            } else {
+                min_ans = min(min_ans, arr[mid]);
+                high = mid - 1;
+            }
+        }
+        return min_ans;
+    }
+};
 ```
