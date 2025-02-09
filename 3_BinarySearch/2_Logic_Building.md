@@ -302,4 +302,31 @@ public:
 ### 8. Single element in sorted array
 Given an array nums sorted in non-decreasing order. Every number in the array except one appears twice. Find the single number in the array.
 
+```
+Bruteforce: T: O(2N) S: O(1)
+```
 
+```
+class Solution {
+public:
+    int singleNonDuplicate(vector<int> &nums) {
+        map<int, int> freq;
+        for (int i=0; i<nums.size(); i++){
+            freq[nums[i]]++;
+        }
+        for (int i=0; i<nums.size(); i++){
+            if (freq[nums[i]] == 1){
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+```
