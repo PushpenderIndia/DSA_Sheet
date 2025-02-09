@@ -115,3 +115,59 @@ public:
 ### 4. Search in rotated sorted array-I
 Given an integer array nums, sorted in ascending order (with distinct values) and a target value k. The array is rotated at some pivot point that is unknown. Find the index at which k is present and if k is not present return -1.
 
+```
+Bruteforce: O(N): Linear search 
+```
+
+```
+class Solution {
+public:
+    int search(vector<int> &nums, int k) {
+        for (int i=0; i<nums.size(); i++){
+            if (nums[i] == k){
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+class Solution {
+public:
+    int search(vector<int> &nums, int k) {
+        int n = nums.size();
+        int low = 0;
+        int high = n - 1;
+        while (low <= high){
+            int mid = (low+high)/2;
+            if (nums[mid] == k){
+                return mid;
+            }
+            else if (nums[low] < nums[mid]){
+                if (nums[low] <= k && nums[mid] >= k){
+                    high = mid - 1;
+                }
+                else {
+                    low = mid + 1;
+                }
+            }
+            else {
+                if (nums[mid] <= k && nums[high] >= k){
+                    low = mid + 1;
+                }
+                else {
+                    high = mid - 1;
+                }
+            }
+            
+        }
+        return -1;
+    }
+};
+```
