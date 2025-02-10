@@ -291,10 +291,85 @@ public:
 };
 ```
 
-### 7. Book Allocation Problem
+### 7. Book Allocation Problem (Very Hard Ques)
 Given an array nums of n integers, where nums[i] represents the number of pages in the i-th book, and an integer m representing the number of students, allocate all the books to the students so that each student gets at least one book, each book is allocated to only one student, and the allocation is contiguous.
 
 Allocate the books to m students in such a way that the maximum number of pages assigned to a student is minimized. If the allocation of books is not possible, return -1.
 
 ```
+Bruteforce
 ```
+
+```
+class Solution {
+    int helper(vector<int> &nums, int pages){
+        int std = 1;
+        int pagesStudent = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (pagesStudent + nums[i] <= pages){
+                pagesStudent += nums[i];
+            }
+            else {
+                std++;
+                pagesStudent = nums[i];
+            }
+        }
+        return std; 
+    }
+public:
+    int findPages(vector<int> &nums, int m)  {
+        int n = nums.size();
+
+        if (n < m) return -1;
+        int low = *max_element(nums.begin(), nums.end());
+        int high = accumulate(nums.begin(), nums.end(), 0);
+        for (int i=low; i<=high; i++){
+            if (helper(nums, i) == m) return i;
+        }
+        return low;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+class Solution {
+    int helper(vector<int> &nums, int pages){
+        int std = 1;
+        int pagesStudent = 0;
+        for (int i=0; i<nums.size(); i++){
+            if (pagesStudent + nums[i] <= pages){
+                pagesStudent += nums[i];
+            }
+            else {
+                std++;
+                pagesStudent = nums[i];
+            }
+        }
+        return std; 
+    }
+public:
+    int findPages(vector<int> &nums, int m)  {
+        int n = nums.size();
+
+        if (n < m) return -1;
+        int low = *max_element(nums.begin(), nums.end());
+        int high = accumulate(nums.begin(), nums.end(), 0);
+        while (low<=high){
+            int mid = (low+high)/2;
+            int val = helper(nums, mid);
+            if (val > m) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+};
+```
+
