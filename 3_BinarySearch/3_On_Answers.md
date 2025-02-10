@@ -140,4 +140,161 @@ Each hour, the monkey chooses a non-empty pile of bananas and eats k bananas. If
 Determine the minimum number of bananas the monkey must eat per hour to finish all the bananas within h hours.
 
 ```
+class Solution {
+    bool canEatInTime(vector<int> &nums, int eat_rate, int h){
+        int total_hour = 0;
+        for (int i=0; i<nums.size(); i++){
+            total_hour += ceil((double)nums[i] / (double)eat_rate);
+            if (total_hour > h) return false;
+        }
+        return true;
+    }
+public:
+int minimumRateToEatBananas(vector<int> nums, int h) {
+        int low = 1;
+        int high = *max_element(nums.begin(), nums.end());
+        int ans = INT_MIN;
+        while (low<=high){
+            int mid = (low+high)/2;
+            bool val = canEatInTime(nums, mid, h);
+            if (val){
+                ans = mid;
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+### 5. Minimum days to make M bouquets
+Given n roses and an array nums where nums[i] denotes that the 'ith' rose will bloom on the nums[i]th day, only adjacent bloomed roses can be picked to make a bouquet. Exactly k adjacent bloomed roses are required to make a single bouquet. Find the minimum number of days required to make at least m bouquets, each containing k roses. Return -1 if it is not possible.
+
+```
+class Solution {
+    bool canWeMakeBouquets(vector<int> &nums, int k, int m, int daysAfter) {
+        int countBouquets = 0;
+        int countAdjustantEle = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] <= daysAfter) {
+                countAdjustantEle++;
+                if (countAdjustantEle == k) { 
+                    countBouquets++;
+                    countAdjustantEle = 0; 
+                    if (countBouquets == m) return true; 
+                }
+            } else {
+                countAdjustantEle = 0; 
+            }
+        }
+        return countBouquets >= m;
+    }
+public:
+int roseGarden(int n,vector<int> nums, int k, int m) {
+        if ((k * m) > n) return -1;
+        int low = 1;
+        int high = *max_element(nums.begin(), nums.end());
+        int ans = INT_MIN;
+        while (low<=high){
+            int mid = (low + high)/2;
+            if (canWeMakeBouquets(nums, k, m, mid)){
+                ans = mid;
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        } 
+        return ans;
+  }
+};
+```
+
+### 6. Aggressive Cows
+Given an array nums of size n, which denotes the positions of stalls, and an integer k, which denotes the number of aggressive cows, assign stalls to k cows such that the minimum distance between any two cows is the maximum possible. Find the maximum possible minimum distance.
+
+```
+Bruteforce
+```
+
+```
+class Solution {
+    bool canWePlaceCow(vector<int> &nums, int k, int dist){
+        int n = nums.size();
+        int cout_Cows = 1;
+        int last = nums[0];
+        for(int i=1; i<n; i++){
+            if (nums[i] - last >= dist){
+                cout_Cows++;
+                last = nums[i];
+            }
+            if (cout_Cows >= k) return true;
+        }
+        return false;
+    }
+public:
+    int aggressiveCows(vector<int> &nums, int k) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int limit = nums[n-1] - nums[0];
+        for (int i=1; i<limit; i++){
+            if (!canWePlaceCow(nums, k, i)){
+                return i - 1;
+            }
+        }
+        return limit;
+    }
+};
+```
+
+```
+Optimal: T: O(NlogN) S: O(1)
+```
+
+```
+class Solution {
+    bool canWePlaceCow(vector<int> &nums, int k, int dist){
+        int n = nums.size();
+        int cout_Cows = 1;
+        int last = nums[0];
+        for(int i=1; i<n; i++){
+            if (nums[i] - last >= dist){
+                cout_Cows++;
+                last = nums[i];
+            }
+            if (cout_Cows >= k) return true;
+        }
+        return false;
+    }
+public:
+    int aggressiveCows(vector<int> &nums, int k) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int low = 1;
+        int high = nums[n-1] - nums[0];
+        int ans;
+        while (low<=high){
+            int mid = (low+high)/2;
+            if (canWePlaceCow(nums, k, mid)){
+                ans = mid;
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return high;
+    }
+};
+```
+
+### 7. Book Allocation Problem
+Given an array nums of n integers, where nums[i] represents the number of pages in the i-th book, and an integer m representing the number of students, allocate all the books to the students so that each student gets at least one book, each book is allocated to only one student, and the allocation is contiguous.
+
+Allocate the books to m students in such a way that the maximum number of pages assigned to a student is minimized. If the allocation of books is not possible, return -1.
+
+```
 ```
