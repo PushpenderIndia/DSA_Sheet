@@ -427,5 +427,39 @@ public:
 };
 ```
 
+### 9. Median of 2 sorted arrays
+Given two sorted arrays arr1 and arr2 of size m and n respectively, return the median of the two sorted arrays.
 
+The median is defined as the middle value of a sorted list of numbers. In case the length of the list is even, the median is the average of the two middle elements.
 
+```
+Bruteforce: T: O(NlogN) S: O(N + M)
+```
+
+```
+class Solution {
+public:
+    double median(vector<int> &arr1, vector<int> &arr2) {
+        vector<int> merged(arr1.begin(), arr1.end());
+        for (int i=0; i<arr2.size(); i++){
+            merged.push_back(arr2[i]);
+        }
+        sort(merged.begin(), merged.end());
+
+        int n = merged.size();
+        if (n % 2 != 0) return merged[n/2]; 
+        else {
+            int first = merged[(int)n/2];
+            int second = merged[((int)n/2)-1];
+            return (double)(first+second)/2;
+        }
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+```
