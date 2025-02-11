@@ -373,3 +373,59 @@ public:
 };
 ```
 
+### 8. Find peak element
+Given an array arr of integers. A peak element is defined as an element greater than both of its neighbors. Formally, if arr[i] is the peak element, arr[i - 1] < arr[i] and arr[i + 1] < arr[i]. Find the index(0-based) of a peak element in the array. If there are multiple peak numbers, return the index of any peak number.
+
+Note: As there can be many peak values, 1 is given as output if the returned index is a peak number, otherwise 0.
+
+```
+Bruteforce: O(N)
+```
+
+```
+class Solution {
+public:
+    int findPeakElement(vector<int> &arr) {
+        int n = arr.size();
+        for (int i=0; i<n; i++){
+            if ((i == 0 || arr[i-1] < arr[i]) && 
+                (i == n -1 || arr[i] > arr[i+1])){
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+class Solution {
+public:
+    int findPeakElement(vector<int> &arr) {
+        int n = arr.size();
+        if (n == 0) return 0;
+        if (arr[0] > arr[1]) return 0;
+        if (arr[n-1] > arr[n-2]) return n - 1;
+
+        int low = 1;
+        int high = n - 2;
+        while (low<=high){
+            int mid = (low+high)/2;
+            if (arr[mid - 1] < arr[mid] && arr[mid] > arr[mid + 1])
+                return mid;
+
+            if (arr[mid] > arr[mid - 1]) low = mid + 1;
+
+            else high = mid - 1;
+        }
+        return -1;
+    }
+};
+```
+
+
+
