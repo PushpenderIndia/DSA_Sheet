@@ -505,3 +505,145 @@ public:
 };
 ```
 
+### 10. Minimise max distance to gas stations (Very Hard - Rare in interviews)
+Given a sorted array arr of size n, containing positive integer positions of n gas stations on the X-axis, and an integer k, place k new gas stations on the X-axis. The new gas stations can be placed anywhere on the non-negative side of the X-axis, including non-integer positions. Let dist be the maximum distance between adjacent gas stations after adding the k new gas stations. Find the minimum value of dist.
+
+```
+Intuition: For Minimising max dist, we need to place new gas stations without existing gas stations
+If lets say we have [1, 13, 17, 23] and k = 5
+then we have gaps dist of 12 (13-1), 4 (17-13), 6 (23-17)
+We will place 1 gs b/w 1 & 13, k left = 4 (5-1)
+New gaps 6 ((13-1)/2), 4, 6
+We need to minimize gap of 6, thus we will place 1 more b/w 1 & 13
+New gaps 4 ((13-1)/3), 4, 6
+Need to minimize gap of 6 b/w 17 & 23 and so on, we will get 
+We need to place 3 gs b/w 1 & 13 ==> Max Gap ==> 3
+1 gs b/w 13 & 17 ==> Max Gap ==> 2
+1 gs b/w 17 & 23 ==> Max Gap ==> 3
+Output: 3
+```
+
+```
+Bruteforce: [T: O(k*N) + O(N)] [S: O(N-1)]
+```
+
+```
+class Solution {
+public:
+    long double minimiseMaxDistance(vector<int> &arr, int k) {
+        int n = arr.size();
+        vector<int> howMany(n-1, 0);
+        for (int gasStations=1; gasStations<=k; gasStations++){
+            double maxSection = -1;
+            int maxInd = -1;
+
+            for (int i=0; i<n-1; i++){
+                double diff = arr[i+1] - arr[i];
+                double sectionLength = diff / (howMany[i]+1);
+
+                if (sectionLength > maxSection){
+                    maxSection = sectionLength;
+                    maxInd = i;
+                }
+            }
+            howMany[maxInd]++;
+        }    
+
+        double maxAns = -1;
+        for (int i=0; i<n-1; i++){
+            double diff = arr[i+1] - arr[i];
+            double sectionLength = diff / (howMany[i] + 1);
+            maxAns = max(maxAns, sectionLength);
+        }
+
+        return maxAns;
+    }
+};
+```
+
+```
+Better: Using priority_queue (Heap DS) for calculating the MaxGap
+T: O(NlogN + klogN)
+S: O(N-1)+O(N-1)
+```
+
+```
+class Solution {
+public:
+    long double minimiseMaxDistance(vector<int> &arr, int k) {
+        int n = arr.size();
+        vector<int> howMany(n-1, 0);
+        priority_queue<pair<long double, int>> pq;
+
+        for (int i=0; i<n-1; i++){
+            pq.push({(long double)(arr[i+1] - arr[i]), i});
+        }
+
+        for (int gasStations=1; gasStations<=k; gasStations++){
+            auto tp = pq.top();
+            pq.pop();
+            int secInd = tp.second;
+            howMany[secInd]++;
+
+            long double inidiff = (long double)(arr[secInd + 1] - arr[secInd]);
+
+            long double newSecLen = inidiff / (long double)(howMany[secInd] + 1);
+
+            pq.push({newSecLen, secInd});
+        }    
+
+        return pq.top().first;
+    }
+};
+```
+
+```
+Optimal
+```
+
+```
+class Solution {
+private:
+    int numberOfGasStationsRequired(long double dist, vector<int> &arr) {
+        int n = arr.size(); 
+        int cnt = 0;
+        for (int i = 1; i < n; i++) {
+            
+            int numberInBetween = ((arr[i] - arr[i - 1]) / dist);
+            
+            if ((arr[i] - arr[i - 1]) == (dist * numberInBetween)) {
+                numberInBetween--;
+            }
+            
+            cnt += numberInBetween;
+        }
+        return cnt;
+    }
+public:
+    long double minimiseMaxDistance(vector<int> &arr, int k) {
+        int n = arr.size(); 
+        long double low = 0;
+        long double high = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            high = max(high, (long double)(arr[i + 1] - arr[i]));
+        }
+
+        long double diff = 1e-6;
+        while (high - low > diff) {
+            long double mid = (low + high) / 2.0;
+            int cnt = numberOfGasStationsRequired(mid, arr);
+
+            if (cnt > k) {
+                low = mid;
+            } else {
+                high = mid;
+            }
+        }
+
+        return high;
+    }
+};
+```
+
+### 11. 
