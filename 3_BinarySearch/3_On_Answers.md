@@ -646,4 +646,30 @@ public:
 };
 ```
 
-### 11. 
+### 11. Kth element of 2 sorted arrays
+Given two sorted arrays a and b of size m and n respectively. Find the kth element of the final sorted array.
+
+```
+Bruteforce: T: [O(NlogN)] S: O(N + M)
+```
+
+```
+class Solution {
+public:
+    int kthElement(vector<int> &a, vector<int>& b, int k) {
+        vector<int> merged(a.begin(), a.end());
+        for (int i=0; i<b.size(); i++){
+            merged.push_back(b[i]);
+        }
+        sort(merged.begin(), merged.end());
+        return merged[k-1];
+  }
+};
+```
+
+```
+Optimal
+```
+
+```
+```
