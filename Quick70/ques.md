@@ -15,6 +15,9 @@ Big O time complexities in order from lowest to highest, along with examples:
 ## Table of Content
 - [Array](#array)
     - [Contains Duplicate](#1-contains-duplicate)
+    - [Missing Number](#2-missing-number)
+    - [Find all missing numbers](#3-find-all-missing-numbers)
+    - [Two Sum](#4-two-sum)
 
 ## Array
 ### 1. Contains Duplicate: 
@@ -76,6 +79,8 @@ O(NlogN): Sort Array and then Check Current element with current Index in for lo
 O(N): 
 ```
 
+- O(NlogN)
+
 ```
 class Solution {
 public:
@@ -94,8 +99,136 @@ public:
 };
 ```
 
+- O(N)
+
 ```
 class Solution {
-    
-}
+public:
+    int missingNumber(vector<int>& nums) {
+        int sumOfN = 0;
+        int sumOfArray = 0;
+        for (int i=0; i<nums.size(); i++){
+            sumOfN += i+1;
+            sumOfArray += nums[i];
+        }
+        return sumOfN - sumOfArray;
+    }
+};
+```
+
+### 3. Find All Missing Numbers
+[Leetcode Link](https://leetcode.com/problems/missing-number/description/)
+```
+Problem: Check given list for missing numbers range(1, len(nums))
+```
+
+- O(N): unordered_set find func complexity O(1) & Single for loop O(N)
+
+```
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        vector<int> missing;
+        unordered_set<int> st(nums.begin(), nums.end());
+
+        int n = nums.size();
+        for (int i=1; i<=n; i++){
+            if (st.find(i) == st.end()){
+                missing.push_back(i);
+            }
+        }
+        return missing;
+    }
+};
+```
+
+### 4. Two Sum
+[Leetcode Link](https://leetcode.com/problems/two-sum/)
+```
+Problem: Return index of two nums whose sum is equal to target
+```
+
+```
+O(N): Calc difference b/w target & current num, if that is present in unordered_map, return its indices
+```
+
+```
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> hm;
+        for (int i=0; i<nums.size(); i++){
+            int diff = target - nums[i];
+            if (hm.find(diff) != hm.end()){
+                return {i, hm[diff]};
+            }
+            hm[nums[i]] = i; 
+        }
+        return {-1, -1};
+    }
+};
+```
+
+### 5. How many numbes are smaller than ?
+[Leetcode Link](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/description/)
+```
+Problem: 
+Input: nums = [8,1,2,2,3]
+Output: [4,0,1,1,3]
+```
+
+```
+Solution:
+```
+
+- T: O(2N) & S: O(3N)
+
+```
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        map<int,int> hm;
+        vector<int> ans;
+        vector<int> temp(nums.begin(), nums.end());
+        sort(temp.begin(), temp.end());
+        for (int i=0; i<temp.size(); i++){
+            if (hm.find(temp[i]) == hm.end()){
+                hm[temp[i]] = i;
+            } 
+        }
+
+        for (auto it : nums){
+            ans.push_back(hm[it]);
+        }
+        return ans;
+    }
+};
+```
+
+### 6. Minimum Time Visiting All Points
+```
+Problem:
+```
+
+```
+Solution Intuition:
+
+Calc Chebyshev distance: 
+time = max(|x2 - x1|, |y2- y1|)
+```
+
+- O(N)
+```
+class Solution {
+public:
+    int minTimeToVisitAllPoints(vector<vector<int>>& points) {
+        int total_time = 0;
+        for (int i=1; i<points.size(); i++){
+            int diff1 = abs(points[i][0] - points[i-1][0]);
+            int diff2 = abs(points[i][1] - points[i-1][1]);
+            total_time += max(diff1, diff2);
+        }
+        return total_time;
+    }
+};
 ```
