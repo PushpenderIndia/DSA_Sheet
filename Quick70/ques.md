@@ -305,6 +305,51 @@ Solution:
 ### 10. Squares of a Sorted Array
 [Leetcode link](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
 
+```
+Bruteforce: O(NlogN)
+```
+
+```
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> squared;
+        for (int i=0; i<nums.size(); i++){
+            squared.push_back(nums[i] * nums[i]);
+        }
+        sort(squared.begin(), squared.end());
+        return squared;
+    }
+};
+```
+
+```
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> result(n);
+        int pos = n - 1;
+        int left = 0;
+        int right = n - 1;
+        while (left <= right){
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+
+            if (leftSquare > rightSquare){
+                result[pos] = leftSquare;
+                left++;
+            } else {
+                result[pos] = rightSquare;
+                right--;
+            }
+            pos--;
+        }
+        return result;
+    }
+};
+```
+
 ### 11. 3Sum
 [Leetcode link](https://leetcode.com/problems/3sum/description/)
 
