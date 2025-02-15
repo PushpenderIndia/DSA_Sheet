@@ -232,3 +232,49 @@ public:
     }
 };
 ```
+
+### 7. Spiral Matrix
+[Leetcode link](https://leetcode.com/problems/spiral-matrix/description/)
+
+```
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> ans;
+        int top = 0;
+        int bottom = matrix.size() - 1;
+        int left = 0;
+        int right = matrix[0].size() - 1;
+        while (left <= right && top <=bottom){
+            // left to right
+            for (int i=left; i<=right; i++){
+                ans.push_back(matrix[top][i]);
+            }
+            top++;
+
+            // top to bottom
+            for (int j=top; j<=bottom; j++){
+                ans.push_back(matrix[j][right]);
+            }
+            right--;
+
+            // right to left
+            if (top <= bottom){
+                for (int k=right; k>=left; k--){
+                    ans.push_back(matrix[bottom][k]);
+                }
+                bottom--;
+            }
+
+            // bottom to top
+            if (left <= right){
+                for (int l=bottom; l>=top; l--){
+                    ans.push_back(matrix[bottom][left]);
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
+};
+```
