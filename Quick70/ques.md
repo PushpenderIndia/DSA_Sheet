@@ -66,11 +66,14 @@ public:
 [Leetcode Link](https://leetcode.com/problems/missing-number/description/)
 
 ```
-
+Problem: Check list for one missing number in range [0,n]
 ```
 
 ```
-Solution Intuition: Sort Array and then Check Current element 
+Solution Intuition: 
+
+O(NlogN): Sort Array and then Check Current element with current Index in for loop
+O(N): 
 ```
 
 ```
@@ -89,4 +92,10 @@ public:
         return -1;
     }
 };
+```
+
+```
+class Solution {
+    
+}
 ```
