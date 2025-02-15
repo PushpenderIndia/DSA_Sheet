@@ -353,8 +353,75 @@ public:
 ### 11. 3Sum
 [Leetcode link](https://leetcode.com/problems/3sum/description/)
 
+```
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> result;
+    sort(nums.begin(), nums.end());  // Step 1: Sort the array
+
+    int n = nums.size();
+    for (int i = 0; i < n - 2; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) continue; // Avoid duplicates for i
+
+        int left = i + 1, right = n - 1;
+        while (left < right) {
+            int sum = nums[i] + nums[left] + nums[right];
+
+            if (sum == 0) {
+                result.push_back({nums[i], nums[left], nums[right]});
+                
+                // Skip duplicate values
+                while (left < right && nums[left] == nums[left + 1]) left++;
+                while (left < right && nums[right] == nums[right - 1]) right--;
+
+                left++;
+                right--;
+            } 
+            else if (sum < 0) {
+                left++;  // Increase sum
+            } 
+            else {
+                right--; // Decrease sum
+            }
+        }
+    }
+    return result;
+}
+```
+
 ### 12. Longest Mountain in Array
 [Leetcode link](https://leetcode.com/problems/longest-mountain-in-array/description/)
+
+```
+class Solution {
+public:
+    int longestMountain(vector<int>& arr) {
+        int n = arr.size();
+        if (n < 3) return 0; // A mountain must have at least 3 elements
+
+        int longest = 0;
+        for (int i = 1; i < n - 1; i++) { // Start from the second element
+            if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) { // Check if it's a peak
+                int left = i, right = i;
+
+                // Move left pointer back while it's increasing
+                while (left > 0 && arr[left] > arr[left - 1]) left--;
+
+                // Move right pointer forward while it's decreasing
+                while (right < n - 1 && arr[right] > arr[right + 1]) right++;
+
+                // Update longest mountain length
+                longest = max(longest, right - left + 1);
+            }
+        }
+        return longest;
+    }
+};
+```
 
 ## ARRAYS SLIDING WINDOW
 ### 12. Contains Duplicate II
