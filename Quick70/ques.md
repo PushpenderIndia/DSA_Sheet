@@ -397,7 +397,7 @@ Solution:
 [Leetcode link](https://leetcode.com/problems/time-needed-to-buy-tickets/description/)
 
 ### 38. Reverse the First K Elements of a Queue
-[Leetcode link](https://leetcode.com/problems/reverse-first-k-elements-of-a-queue/) *(Custom problem, no direct Leetcode link)*
+*(Custom problem, no direct Leetcode link)*
 
 ## BINARY TREES
 ### 39. Average of Levels in Binary Tree
@@ -410,7 +410,7 @@ Solution:
 [Leetcode link](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
 
 ### 42. Min/Max Value in Binary Tree
-[Leetcode link](https://leetcode.com/problems/find-bottom-left-tree-value/description/) *(Closest match for Min/Max value in tree)*
+*(Closest match for Min/Max value in tree)*
 
 ### 43. Binary Tree Level Order Traversal
 [Leetcode link](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
