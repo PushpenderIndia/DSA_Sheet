@@ -316,8 +316,10 @@ Solution:
 [Leetcode link](https://leetcode.com/problems/contains-duplicate-ii/description/)
 
 ### 13. Minimum Absolute Difference
+[Leetcode link](https://leetcode.com/problems/minimum-absolute-difference/description/)
 
 ### 14. Minimum Size Subarray Sum
+[Leetcode link](https://leetcode.com/problems/minimum-absolute-difference/description/)
 
 ## BIT MANIPULATION
 ### 15. Single Number
