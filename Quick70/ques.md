@@ -22,7 +22,16 @@ Big O time complexities in order from lowest to highest, along with examples:
     - [Time Minimum Visting all points](#6-minimum-time-visiting-all-points)
     - [Spiral Matrix](#7-spiral-matrix)
     - [Number of Islands](#8-number-of-islands)
-- [Array Two Pointers]()
+- [Array Two Pointers](#arrays-two-pointers)
+    - [Best Time to Buy and Sell Stock](#9-best-time-to-buy-and-sell-stock)
+    - [Squares of a sorted array](#10-squares-of-a-sorted-array)
+    - [3SUM](#11-3sum)
+    - [Longest Mountain in array](#12-longest-mountain-in-array)
+- [ARRAYS SLIDING WINDOW](#arrays-sliding-window)
+    - [](#14-minimum-absolute-difference)
+    - [](#15-minimum-size-subarray-sum)
+    - [](#16-single-number)
+    - [](#17-coin-change)
 
 ## Array
 ### 1. Contains Duplicate: 
