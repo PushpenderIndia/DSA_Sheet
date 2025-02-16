@@ -1,6 +1,9 @@
 import json
 import pandas as pd
+import requests
 
+# r = requests.get("https://premium-backend.takeuforward.org/api/v2/course/allSyllabus/dsa")
+# data = r.json()
 with open('dsa.json') as f:
     data = json.load(f)
     
@@ -14,11 +17,17 @@ for category in categories:
     for subcategory in subcategories:
         problems = subcategory['problems']
         for problem in problems:
+            problem_id = problem['problem_id']
+            problem_id = problem_id.replace('/', '%2F')
+            url = f'https://premium-backend.takeuforward.org/api/v2/course/problem/getDetails/{problem_id}'
+            response = requests.get(url)
+            problem = response.json()
             final_data.append({
-                'category': category['category_name'],
-                'subcategory': subcategory['subcategory_name'],
-                'problem': problem['problem_name'],
-                'is_completed': problem['is_completed']
+                'Category': category['category_name'],
+                'Subcategory': subcategory['subcategory_name'],
+                'Problem': problem['problem_name'],
+                'URL': problem['url'],
+                'Is_completed': problem['is_completed'],
             })
 
 df = pd.DataFrame(final_data)

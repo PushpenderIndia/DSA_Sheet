@@ -531,9 +531,25 @@ public:
 ### 16. Single Number
 [Leetcode link](https://leetcode.com/problems/single-number/description/)
 
+```
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for (int i=0; i<nums.size(); i++){
+            ans = ans ^ nums[i];
+        }
+        return ans;
+    }
+};
+```
+
 ## DYNAMIC PROGRAMMING
 ### 17. Coin Change
 [Leetcode link](https://leetcode.com/problems/coin-change/description/)
+
+```
+```
 
 ### 18. Climbing Stairs
 [Leetcode link](https://leetcode.com/problems/climbing-stairs/description/)
