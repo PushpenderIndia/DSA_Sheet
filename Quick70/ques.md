@@ -302,6 +302,26 @@ Solution:
 ### 9. Best Time to Buy and Sell Stock
 [Leetcode link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 
+```
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minPrice = INT_MAX; // Set to a very high value initially
+        int maxProfit = 0;      // No profit initially
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;  // Update lowest price
+            } 
+            else {
+                maxProfit = max(maxProfit, price - minPrice);  // Check max profit
+            }
+        }
+        return maxProfit;
+    }
+};
+```
+
 ### 10. Squares of a Sorted Array
 [Leetcode link](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
 
@@ -427,11 +447,76 @@ public:
 ### 12. Contains Duplicate II
 [Leetcode link](https://leetcode.com/problems/contains-duplicate-ii/description/)
 
+```
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int, int> hm;
+        for (int i=0; i<nums.size(); i++){
+            if (hm.find(nums[i]) != hm.end()){
+                int dist = i - hm[nums[i]];
+                if (dist <= k){
+                    return true;
+                } 
+            }
+            hm[nums[i]] = i;
+
+        }
+        return false;
+    }
+};
+```
+
 ### 13. Minimum Absolute Difference
 [Leetcode link](https://leetcode.com/problems/minimum-absolute-difference/description/)
 
+```
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        vector<vector<int>> ans;
+        sort(arr.begin(), arr.end());
+        int small_diff = INT_MAX;
+        for (int i=1; i<arr.size(); i++){
+            int diff = arr[i] - arr[i-1];
+            small_diff = min(small_diff, diff);
+        }
+
+        for (int i=1; i<arr.size(); i++){
+            int diff = arr[i] - arr[i-1];
+            if (diff == small_diff){
+                ans.push_back({arr[i-1], arr[i]});
+            }
+        } 
+        return ans;
+    }
+};
+```
+
 ### 14. Minimum Size Subarray Sum
-[Leetcode link](https://leetcode.com/problems/minimum-absolute-difference/description/)
+[Leetcode link](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+
+```
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int left = 0;
+        int sum = 0;
+        int minLength = INT_MAX;
+        for (int right=0; right<nums.size(); right++){
+            sum += nums[right];
+
+            while (sum >= target){
+                minLength = min(minLength, right - left + 1);
+                sum -= nums[left];
+                left++;
+            }
+        }
+
+        return (minLength == INT_MAX) ? 0 : minLength;
+    }
+};
+```
 
 ## BIT MANIPULATION
 ### 15. Single Number
