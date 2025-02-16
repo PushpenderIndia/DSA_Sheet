@@ -444,7 +444,7 @@ public:
 ```
 
 ## ARRAYS SLIDING WINDOW
-### 12. Contains Duplicate II
+### 13. Contains Duplicate II
 [Leetcode link](https://leetcode.com/problems/contains-duplicate-ii/description/)
 
 ```
@@ -467,7 +467,7 @@ public:
 };
 ```
 
-### 13. Minimum Absolute Difference
+### 14. Minimum Absolute Difference
 [Leetcode link](https://leetcode.com/problems/minimum-absolute-difference/description/)
 
 ```
@@ -493,7 +493,7 @@ public:
 };
 ```
 
-### 14. Minimum Size Subarray Sum
+### 15. Minimum Size Subarray Sum
 [Leetcode link](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
 
 ```
@@ -519,164 +519,164 @@ public:
 ```
 
 ## BIT MANIPULATION
-### 15. Single Number
+### 16. Single Number
 [Leetcode link](https://leetcode.com/problems/single-number/description/)
 
 ## DYNAMIC PROGRAMMING
-### 16. Coin Change
+### 17. Coin Change
 [Leetcode link](https://leetcode.com/problems/coin-change/description/)
 
-### 17. Climbing Stairs
+### 18. Climbing Stairs
 [Leetcode link](https://leetcode.com/problems/climbing-stairs/description/)
 
-### 18. Maximum Subarray
+### 19. Maximum Subarray
 [Leetcode link](https://leetcode.com/problems/maximum-subarray/description/)
 
-### 19. Counting Bits
+### 20. Counting Bits
 [Leetcode link](https://leetcode.com/problems/counting-bits/description/)
 
-### 20. Range Sum Query - Immutable
+### 21. Range Sum Query - Immutable
 [Leetcode link](https://leetcode.com/problems/range-sum-query-immutable/description/)
 
 ## BACKTRACKING
-### 21. Letter Case Permutation
+### 22. Letter Case Permutation
 [Leetcode link](https://leetcode.com/problems/letter-case-permutation/description/)
 
-### 22. Subsets
+### 23. Subsets
 [Leetcode link](https://leetcode.com/problems/subsets/description/)
 
-### 23. Combinations
+### 24. Combinations
 [Leetcode link](https://leetcode.com/problems/combinations/description/)
 
-### 24. Permutations
+### 25. Permutations
 [Leetcode link](https://leetcode.com/problems/permutations/description/)
 
 ## LINKED LISTS
-### 25. Middle of Linked List
+### 26. Middle of Linked List
 [Leetcode link](https://leetcode.com/problems/middle-of-the-linked-list/description/)
 
-### 26. Linked List Cycle
+### 27. Linked List Cycle
 [Leetcode link](https://leetcode.com/problems/linked-list-cycle/description/)
 
-### 27. Reverse Linked List
+### 28. Reverse Linked List
 [Leetcode link](https://leetcode.com/problems/reverse-linked-list/description/)
 
-### 28. Remove Linked List Elements
+### 29. Remove Linked List Elements
 [Leetcode link](https://leetcode.com/problems/remove-linked-list-elements/description/)
 
-### 29. Reverse Linked List II
+### 30. Reverse Linked List II
 [Leetcode link](https://leetcode.com/problems/reverse-linked-list-ii/description/)
 
-### 30. Palindrome Linked List
+### 31. Palindrome Linked List
 [Leetcode link](https://leetcode.com/problems/palindrome-linked-list/description/)
 
-### 31. Merge Two Sorted Lists
+### 32. Merge Two Sorted Lists
 [Leetcode link](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 ## STACKS
-### 32. Min Stack
+### 33. Min Stack
 [Leetcode link](https://leetcode.com/problems/min-stack/description/)
 
-### 33. Valid Parentheses
+### 34. Valid Parentheses
 [Leetcode link](https://leetcode.com/problems/valid-parentheses/description/)
 
-### 34. Evaluate Reverse Polish Notation
+### 35. Evaluate Reverse Polish Notation
 [Leetcode link](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
 
-### 35. Stack Sorting
+### 36. Stack Sorting
 [Leetcode link](https://leetcode.com/problems/longest-valid-parentheses/description/) *(Closest relevant problem)
 
 ## QUEUES
-### 36. Implement Stack using Queues
+### 37. Implement Stack using Queues
 [Leetcode link](https://leetcode.com/problems/implement-stack-using-queues/description/)
 
-### 37. Time Needed to Buy Tickets
+### 38. Time Needed to Buy Tickets
 [Leetcode link](https://leetcode.com/problems/time-needed-to-buy-tickets/description/)
 
-### 38. Reverse the First K Elements of a Queue
+### 39. Reverse the First K Elements of a Queue
 *(Custom problem, no direct Leetcode link)*
 
 ## BINARY TREES
-### 39. Average of Levels in Binary Tree
+### 40. Average of Levels in Binary Tree
 [Leetcode link](https://leetcode.com/problems/average-of-levels-in-binary-tree/description/)
 
-### 40. Minimum Depth of Binary Tree
+### 41. Minimum Depth of Binary Tree
 [Leetcode link](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)
 
-### 41. Maximum Depth of Binary Tree
+### 42. Maximum Depth of Binary Tree
 [Leetcode link](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
 
-### 42. Min/Max Value in Binary Tree
+### 43. Min/Max Value in Binary Tree
 *(Closest match for Min/Max value in tree)*
 
-### 43. Binary Tree Level Order Traversal
+### 44. Binary Tree Level Order Traversal
 [Leetcode link](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
 
-### 44. Same Tree
+### 45. Same Tree
 [Leetcode link](https://leetcode.com/problems/same-tree/description/)
 
-### 45. Path Sum
+### 46. Path Sum
 [Leetcode link](https://leetcode.com/problems/path-sum/description/)
 
-### 46. Diameter of a Binary Tree
+### 47. Diameter of a Binary Tree
 [Leetcode link](https://leetcode.com/problems/diameter-of-binary-tree/description/)
 
-### 47. Invert Binary Tree
+### 48. Invert Binary Tree
 [Leetcode link](https://leetcode.com/problems/invert-binary-tree/description/)
 
-### 48. Lowest Common Ancestor of a Binary Tree
+### 49. Lowest Common Ancestor of a Binary Tree
 [Leetcode link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
 
 ## BINARY SEARCH TREES
-### 49. Search in a Binary Search Tree
+### 50. Search in a Binary Search Tree
 [Leetcode link](https://leetcode.com/problems/search-in-a-binary-search-tree/description/)
 
-### 50. Insert into a Binary Search Tree
+### 51. Insert into a Binary Search Tree
 [Leetcode link](https://leetcode.com/problems/insert-into-a-binary-search-tree/description/)
 
-### 51. Convert Sorted Array to Binary Search Tree
+### 52. Convert Sorted Array to Binary Search Tree
 [Leetcode link](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/)
 
-### 52. Two Sum IV - Input is a BST
+### 53. Two Sum IV - Input is a BST
 [Leetcode link](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/)
 
-### 53. Lowest Common Ancestor of a Binary Search Tree
+### 54. Lowest Common Ancestor of a Binary Search Tree
 [Leetcode link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
 
-### 54. Minimum Absolute Difference in BST
+### 55. Minimum Absolute Difference in BST
 [Leetcode link](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/)
 
-### 55. Balance a Binary Search Tree
+### 56. Balance a Binary Search Tree
 [Leetcode link](https://leetcode.com/problems/balance-a-binary-search-tree/description/)
 
-### 56. Delete Node in a BST
+### 57. Delete Node in a BST
 [Leetcode link](https://leetcode.com/problems/delete-node-in-a-bst/description/)
 
-### 57. Kth Smallest Element in a BST
+### 58. Kth Smallest Element in a BST
 [Leetcode link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
 
 ## HEAPS
-### 58. Kth Largest Element in an Array
+### 59. Kth Largest Element in an Array
 [Leetcode link](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 
-### 59. K Closest Points to Origin
+### 60. K Closest Points to Origin
 [Leetcode link](https://leetcode.com/problems/k-closest-points-to-origin/description/)
 
-### 60. Top K Frequent Elements
+### 61. Top K Frequent Elements
 [Leetcode link](https://leetcode.com/problems/top-k-frequent-elements/description/)
 
-### 61. Task Scheduler
+### 62. Task Scheduler
 [Leetcode link](https://leetcode.com/problems/task-scheduler/description/)
 
 ## GRAPHS
-### 62. Breadth and Depth First Traversal
+### 63. Breadth and Depth First Traversal
 [Leetcode link](https://leetcode.com/problems/clone-graph/description/) *(Closest relevant problem)*
 
-### 63. Clone Graph
+### 64. Clone Graph
 [Leetcode link](https://leetcode.com/problems/clone-graph/description/)
 
-### 64. Core Graph Operations
+### 65. Core Graph Operations
 [Leetcode link](https://leetcode.com/problems/course-schedule/description/) *(Closest relevant problem)*
 
-### 65. Cheapest Flights Within K Stops
+### 66. Cheapest Flights Within K Stops
 [Leetcode link](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
