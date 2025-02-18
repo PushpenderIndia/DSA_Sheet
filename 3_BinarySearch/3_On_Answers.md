@@ -509,7 +509,7 @@ public:
 Given a sorted array arr of size n, containing positive integer positions of n gas stations on the X-axis, and an integer k, place k new gas stations on the X-axis. The new gas stations can be placed anywhere on the non-negative side of the X-axis, including non-integer positions. Let dist be the maximum distance between adjacent gas stations after adding the k new gas stations. Find the minimum value of dist.
 
 ```
-Intuition: For Minimising max dist, we need to place new gas stations without existing gas stations
+Intuition: For Minimising max dist, we need to place new gas stations with existing gas stations
 If lets say we have [1, 13, 17, 23] and k = 5
 then we have gaps dist of 12 (13-1), 4 (17-13), 6 (23-17)
 We will place 1 gs b/w 1 & 13, k left = 4 (5-1)
